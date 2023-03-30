@@ -1,4 +1,3 @@
-from random import seed
 from random import randint
 
 while True:
