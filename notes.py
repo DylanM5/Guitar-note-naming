@@ -1,16 +1,30 @@
+import tkinter as tk
 from random import randint
 
-while True:
 
-    for _ in range(1):
-        fret = randint(0, 12)
-        print("Fret: " + str(fret))
+def generate_numbers():
+    fret = randint(0, 12)
+    string = randint(1, 6)
+    fret_label.config(text="Fret: " + str(fret))
+    string_label.config(text="String: " + str(string))
 
-    for _ in range(1):
-        string = randint(1, 6)
-        print("String: " + str(string))
 
-        repeat = input("Do you want to repeat? (y/n)")
+def repeat():
+    generate_numbers()
 
-        if repeat.lower() != "y":
-            break
+
+root = tk.Tk()
+root.title("Random Note Generator")
+
+fret_label = tk.Label(root, text="Fret: ")
+fret_label.pack()
+
+string_label = tk.Label(root, text="String: ")
+string_label.pack()
+
+generate_button = tk.Button(root, text="Generate", command=generate_numbers)
+generate_button.pack()
+
+
+root.after(1000, repeat)
+root.mainloop()
